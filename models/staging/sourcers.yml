@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: adventureworks_data
+    schema: adventureworks_el
+    description: This is the Adventure Works erp postgres database replica
+    tables:
+      - name: person_address
+      - name: person_countryregion
+      - name: person_person
+      - name: person_stateprovince
