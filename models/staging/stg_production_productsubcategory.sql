@@ -3,7 +3,7 @@ with source_data as (
         productsubcategoryid
         , productcategoryid
         , name as subcategory_name
-    from {{source('adventureworks_data','production_productcategory')}}
+    from {{source('adventureworks_data','production_productsubcategory')}}
 )
 
 select *
