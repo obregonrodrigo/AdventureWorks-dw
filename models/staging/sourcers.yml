@@ -9,3 +9,7 @@ sources:
       - name: person_countryregion
       - name: person_person
       - name: person_stateprovince
+      - name: humanresources_employee
+      - name: production_product
+      - name: production_productcategory
+      - name: production_productsubcategory
