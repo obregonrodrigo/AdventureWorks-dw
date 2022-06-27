@@ -13,3 +13,12 @@ sources:
       - name: production_product
       - name: production_productcategory
       - name: production_productsubcategory
+      - name: sales_creditcard
+      - name: sales_customer
+      - name: sales_personcreditcard
+      - name: sales_salesorderdetail
+      - name: sales_salesorderheader
+      - name: sales_salesorderheadersalesreason
+      - name: sales_salesperson
+      - name: sales_salesreason
+      - name: sales_salesterritory
