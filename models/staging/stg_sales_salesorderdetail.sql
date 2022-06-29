@@ -8,6 +8,7 @@ with source_data as (
         , orderqty
         , unitprice
         , unitpricediscount
+        , (unitprice * orderqty) * (1 - unitpricediscount)  as total_price
     from {{source('adventureworks_data','sales_salesorderdetail')}}
 )
 
