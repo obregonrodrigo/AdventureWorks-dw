@@ -27,7 +27,7 @@ with select_customer as (
             , select_customer.territoryid
             , select_person.businessentityid
             , select_person.full_name
-            , select_person.emailpromotion
+            --, select_person.emailpromotion
 
         from select_customer
             left join select_person

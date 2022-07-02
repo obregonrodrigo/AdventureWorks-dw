@@ -45,7 +45,7 @@ with select_salesperson as (
             , select_person.person_id
             , select_person.full_name
             , select_person.persontype
-            , select_person.emailpromotion
+            --, select_person.emailpromotion
 
         from select_salesperson
             left join select_employee

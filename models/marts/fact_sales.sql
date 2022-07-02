@@ -22,89 +22,86 @@ with select_address as (
         select *
         from {{ ref('dim_salesreason') }}
     )
-    , select_sales_union as (
+    , select_details as (
+        select *
+        from {{ ref('stg_sales_salesorderdetail') }}
+    )
+    , select_fullsales as (
         select
-            salesorderid
+            fullsales.salesorderid
+            , fullsales.customerid
+            , fullsales.salespersonid
+            , fullsales.territoryid
+            , fullsales.billtoaddressid
+            , fullsales.shiptoaddressid
+            , fullsales.shipmethodid
+            , fullsales.creditcardid
+            , fullsales.currencyrateid
+            , fullsales.revisionnumber
+            , fullsales.purchaseordernumber
+            , fullsales.accountnumber
+            , fullsales.orderdate
+            , fullsales.shipdate
+            , fullsales.order_status
+            , fullsales.subtotal
+            , fullsales.taxamt
+            , fullsales.freight
+            , select_details.salesorderdetailid
+            , select_details.productid
+            , select_details.carriertrackingnumber
+            , select_details.orderqty
+            , select_details.unitprice
+            , select_details.unitpricediscount
+            , select_details.total_price
+
+        from {{ ref('stg_sales_salesorderheader') }} as fullsales
+            left join select_details
+                on select_details.salesorderid = fullsales.salesorderid
+    )
+    , final_fact as (
+        select
+            select_fullsales.salesorderid
             , select_address.address_sk
             , select_creditcard.creditcard_sk
             , select_customer.customer_sk
             , select_employee.employee_sk
             , select_salesreason.reason_sk
-            , revisionnumber
-            , purchaseordernumber
-            , accountnumber
-            , customerid
-            , salespersonid
-            , territoryid
-            , billtoaddressid
-            , shiptoaddressid
-            , shipmethodid
-            , creditcardid
-            , currencyrateid
-            , orderdate
-            , duedate
-            , shipdate
-            , order_status
-            , subtotal
-            , taxamt
-            , freight
-            , totaldue
+            , select_fullsales.salesorderdetailid
+            , select_fullsales.customerid
+            , select_fullsales.salespersonid
+            , select_fullsales.territoryid
+            , select_fullsales.billtoaddressid
+            , select_fullsales.shiptoaddressid
+            , select_fullsales.shipmethodid
+            , select_fullsales.creditcardid
+            , select_fullsales.currencyrateid
+            , select_fullsales.productid
+            , select_fullsales.revisionnumber
+            , select_fullsales.purchaseordernumber
+            , select_fullsales.accountnumber
+            , select_fullsales.orderdate
+            , select_fullsales.shipdate
+            , select_fullsales.order_status
+            , select_fullsales.subtotal
+            , select_fullsales.taxamt
+            , select_fullsales.freight
+            , select_fullsales.carriertrackingnumber
+            , select_fullsales.orderqty
+            , select_fullsales.unitprice
+            , select_fullsales.unitpricediscount
+            , select_fullsales.total_price
 
-        from {{ ref('stg_sales_salesorderheader') }} as sales_union
+        from select_fullsales
             left join select_employee
-                on select_employee.businessentityid = sales_union.salespersonid
+                on select_employee.businessentityid = select_fullsales.salespersonid
             left join select_customer
-                on select_customer.customerid = sales_union.customerid
+                on select_customer.customerid = select_fullsales.customerid
             left join select_address
-                on select_address.addressid = sales_union.shiptoaddressid
+                on select_address.addressid = select_fullsales.shiptoaddressid
             left join select_salesreason
-                on select_salesreason.salesorderid = sales_union.salesorderid
+                on select_salesreason.salesorderid = select_fullsales.salesorderid
             left join select_creditcard
-                on select_creditcard.creditcard_id = sales_union.creditcardid
-    )
-    , select_salesdetail_union as (
-        select
-            salesorderid
-            , select_product.product_sk
-            , salesorderdetailid
-            , productid
-            , carriertrackingnumber
-            , orderqty
-            , unitprice
-            , unitpricediscount
-            , total_price
-
-        from {{ ref('stg_sales_salesorderheader') }} as salesdetail_union
-            left join select_product
-                on select_product.productid = salesdetail_union.productid
-    )
-    , final_fact as (
-        select
-            select_sales_union.salesorderid
-            , select_sales_union.address_sk
-            , select_sales_union.creditcard_sk
-            , select_sales_union.customer_sk
-            , select_sales_union.employee_sk
-            , select_sales_union.reason_sk
-            , select_salesdetail_union.product_sk
-            , select_sales_union.purchaseordernumber
-            , select_sales_union.accountnumber
-            , select_sales_union.orderdate
-            , select_sales_union.duedate
-            , select_sales_union.shipdate
-            , select_sales_union.order_status
-            , select_sales_union.subtotal
-            , select_sales_union.taxamt
-            , select_sales_union.freight
-            , select_sales_union.totaldue
-            , select_salesdetail_union.orderqty
-            , select_salesdetail_union.unitprice
-            , select_salesdetail_union.unitpricediscount
-            , select_salesdetail_union.total_price
-
-        from select_sales_union
-            left join select_salesdetail_union
-                on select_salesdetail_union.salesorderid = select_salesdetail_union.salesorderid
+                on select_creditcard.creditcard_id = select_fullsales.creditcardid
     )
 
-select * from final_fact
+    select * from final_fact
