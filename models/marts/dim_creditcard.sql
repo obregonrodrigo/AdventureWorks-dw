@@ -1,7 +1,7 @@
 with select_creditcard as (
 
     select
-        creditcard_id
+        creditcardid
         , cardtype
         , cardnumber				
     
@@ -17,15 +17,15 @@ with select_creditcard as (
     )
     , transformed as (
         select
-            row_number() over (order by creditcard_id) as creditcard_sk -- auto-incremental surrogate key
-            , select_creditcard.creditcard_id
+            row_number() over (order by select_creditcard.creditcardid) as creditcard_sk -- auto-incremental surrogate key
+            , select_creditcard.creditcardid
             , select_creditcard.cardtype
             , select_creditcard.cardnumber
             , select_personcreditcard.businessentityid
 
         from select_creditcard
             left join select_personcreditcard
-                on select_personcreditcard.creditcardid = select_creditcard.creditcard_id
+                on select_personcreditcard.creditcardid = select_creditcard.creditcardid
 
 )
 
