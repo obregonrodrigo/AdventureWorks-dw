@@ -69,7 +69,7 @@ with select_address as (
             , select_fullsales.salesorderdetailid
             , select_fullsales.customerid
             , select_fullsales.salespersonid
-            , select_fullsales.territoryid
+            --, select_fullsales.territoryid
             , select_fullsales.billtoaddressid
             , select_fullsales.shiptoaddressid
             , select_fullsales.shipmethodid

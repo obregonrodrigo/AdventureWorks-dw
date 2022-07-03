@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: fact_sales
+    columns:
+      - name: salesorderid
+        description: The primary key of the dim product
+        tests:
+          - unique
+          - not_null
+
+      - name: address_sk
+        description: Chave primária do produto
+        tests:
+          - unique
+          - not_null
+        
+      - name: creditcard_sk
+        description: produto é um membro deste modelo de produto. Chave estrangeira para ProductModelID
+    
+      - name: customer_sk
+        description: Nome do produto
+
+      - name: employee_sk
+        description: Número único de identificação do produto
+      
+      - name: reason_sk
+        description: Cor do produto
+
+      - name: salesorderdetailid
+        description: Preço de venda 
+      
+      - name: customerid
+        description: Tamanho do produto
+
+      - name: salespersonid
+        description: Unidade de medida para a coluna product_weight
+      
+      - name: billtoaddressid
+        description: Peso do Produto
+
+      - name: shiptoaddressid
+        description: Número de dias necessários para fabricar o produto
+      
+      - name: shipmethodid
+        description: A qual linha o produto pertence, R = Estrada, M = Montanha, T = Turismo, S = Padrão
+
+      - name: creditcardid
+        description: Número único de identificação do produto
+      
+      - name: currencyrateid
+        description: Classificação do produto, H = Alto, M = Médio, L = Baixo
+
+      - name: productid
+        description: Classificação do estilo do produto, W = Feminino, M = Masculino, U = Universal
+      
+      - name: revisionnumber
+        description: Data em que o produto estava disponível para venda
+
+      - name: purchaseordernumber
+        description: Data em que o produto não estava mais disponível para venda
+      
+      - name: accountnumber
+        description: Data em que o produto foi descontinuado
+
+      - name: orderdate
+        description: Número de identificação da categoria do produto. 
+
+      - name: shipdate
+        description: Descrição da categoria
+      
+      - name: order_status
+        description: Número de identificação da subcategoria do produto. 
+
+      - name: subtotal
+        description: Descrição da subcategoria
+
+      - name: taxamt
+        description: Data em que o produto foi descontinuado
+
+      - name: freight
+        description: Número de identificação da categoria do produto. 
+
+      - name: unitprice
+        description: Descrição da categoria
+      
+      - name: unitpricediscount
+        description: Número de identificação da subcategoria do produto. 
+
+      - name: total_price
+        description: Descrição da subcategoria
