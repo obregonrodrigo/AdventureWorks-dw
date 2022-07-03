@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_salesreason
+    columns:
+      - name: reason_sk
+        description: The primary key of the dim salesreason
+        tests:
+          - unique
+          - not_null
+
+      - name: salesorderid
+        description: Número de identificação da venda do produto
+
+      - name: salesreasonid
+        description: Número de identificação do motivo da venda
+      
+      - name: reason_name
+        description: Descrição do motivo da venda
+
+      - name: reasontype
+        description: Categoria à qual o motivo da venda pertence

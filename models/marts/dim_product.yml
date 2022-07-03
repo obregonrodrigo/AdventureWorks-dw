@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: dim_product
+    columns:
+      - name: product_sk
+        description: The primary key of the dim product
+        tests:
+          - unique
+          - not_null
+
+      - name: productid
+        description: Chave primária do produto
+        tests:
+          - unique
+          - not_null
+        
+      - name: productmodelid
+        description: produto é um membro deste modelo de produto. Chave estrangeira para ProductModelID
+    
+      - name: product_name
+        description: Nome do produto
+
+      - name: productnumber
+        description: Número único de identificação do produto
+      
+      - name: color
+        description: Cor do produto
+
+      - name: listprice
+        description: Preço de venda 
+      
+      - name: product_size
+        description: Tamanho do produto
+
+      - name: weightunitmeasurecode
+        description: Unidade de medida para a coluna product_weight
+      
+      - name: product_weight
+        description: Peso do Produto
+
+      - name: daystomanufacture
+        description: Número de dias necessários para fabricar o produto
+      
+      - name: productline
+        description: A qual linha o produto pertence, R = Estrada, M = Montanha, T = Turismo, S = Padrão
+
+      - name: productnumber
+        description: Número único de identificação do produto
+      
+      - name: class
+        description: Classificação do produto, H = Alto, M = Médio, L = Baixo
+
+      - name: style
+        description: Classificação do estilo do produto, W = Feminino, M = Masculino, U = Universal
+      
+      - name: sellstartdate
+        description: Data em que o produto estava disponível para venda
+
+      - name: sellenddate
+        description: Data em que o produto não estava mais disponível para venda
+      
+      - name: discontinueddate
+        description: Data em que o produto foi descontinuado
+
+      - name: productcategoryid
+        description: Número de identificação da categoria do produto. 
+
+      - name: category_name
+        description: Descrição da categoria
+      
+      - name: productsubcategoryid
+        description: Número de identificação da subcategoria do produto. 
+
+      - name: subcategory_name
+        description: Descrição da subcategoria      
