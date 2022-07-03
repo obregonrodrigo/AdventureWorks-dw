@@ -1,6 +1,6 @@
 with source_data as (
     select
-        creditcardid as creditcard_id
+        creditcardid
         , cardtype
         , cardnumber
         , expmonth

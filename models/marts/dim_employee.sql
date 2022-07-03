@@ -13,7 +13,7 @@ with select_salesperson as (
 )
     , select_employee as (
         select
-            businessentityid as employee_id
+            businessentityid -- employee_id
             , jobtitle
             , hiredate
             , gender			
@@ -22,7 +22,7 @@ with select_salesperson as (
     )
     , select_person as (
         select
-            businessentityid as person_id
+            businessentityid -- as person_id
             , full_name
             , persontype
             , emailpromotion			
@@ -31,27 +31,25 @@ with select_salesperson as (
     )
     , transformed as (
         select
-            row_number() over (order by businessentityid) as employee_sk -- auto-incremental surrogate key
-            , select_salesperson.businessentityid
+            row_number() over (order by select_employee.businessentityid) as employee_sk -- auto-incremental surrogate key
+            , select_employee.businessentityid
+            , select_employee.jobtitle
+            , select_person.full_name
+            , select_person.persontype
+            , select_employee.hiredate
+            , select_employee.gender
             , select_salesperson.salesquota
             , select_salesperson.bonus
             , select_salesperson.commissionpct
             , select_salesperson.salesytd
             , select_salesperson.saleslastyear
-            , select_employee.employee_id
-            , select_employee.jobtitle
-            , select_employee.hiredate
-            , select_employee.gender
-            , select_person.person_id
-            , select_person.full_name
-            , select_person.persontype
-            --, select_person.emailpromotion
+            
 
-        from select_salesperson
-            left join select_employee
-                on select_employee.employee_id = select_salesperson.businessentityid
+        from select_employee
             left join select_person
-                on select_person.person_id = select_employee.employee_id
+                on select_person.businessentityid = select_employee.businessentityid
+            left join select_salesperson
+                on select_salesperson.businessentityid = select_person.businessentityid
 
 )
 

@@ -101,7 +101,7 @@ with select_address as (
             left join select_salesreason
                 on select_salesreason.salesorderid = select_fullsales.salesorderid
             left join select_creditcard
-                on select_creditcard.creditcard_id = select_fullsales.creditcardid
+                on select_creditcard.creditcardid = select_fullsales.creditcardid
     )
 
     select * from final_fact
