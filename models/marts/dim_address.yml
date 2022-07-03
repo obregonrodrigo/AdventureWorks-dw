@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_address
+    columns:
+      - name: address_sk
+        description: The primary key of the dim address
+        tests:
+          - unique
+          - not_null
+
+      - name: addressid
+        description: Chave primária dos registros de endereço
+        tests:
+          - unique
+          - not_null
+
+      - name: addressline1
+        description: Primeira linha do endereço
+      
+      - name: addressline2
+        description: Segunda linha do endereço
+
+      - name: city
+        description: Nome da cidade
+      
+      - name: postalcode
+        description: Código postal do endereço
+      
+      - name: stateprovincecode
+        description: Código do estado ou provincia
+      
+      - name: province_name
+        description: Descrição do estado ou província
+      
+      - name: countryregioncode
+        description: Código do país ou região
+
+      - name: country_name
+        description: Descrição do país ou região

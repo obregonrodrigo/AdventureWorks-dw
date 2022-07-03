@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_creditcard
+    columns:
+      - name: creditcard_sk
+        description: The primary key of the dim creditcard
+        tests:
+          - unique
+          - not_null
+
+      - name: creditcardid
+        description: Chave primária dos registros de cartão de crédito
+        tests:
+          - unique
+          - not_null
+
+      - name: cardtype
+        description: Nome do cartão de crédito
+      
+      - name: cardnumber
+        description: Número do cartão de crédito
+
+      - name: businessentityid
+        description: Número de identificação da entidade comercial
+      

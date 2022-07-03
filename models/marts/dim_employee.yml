@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_employee
+    columns:
+      - name: employee_sk
+        description: The primary key of the dim creditcard
+        tests:
+          - unique
+          - not_null
+
+      - name: businessentityid
+        description: Número de identificação da entidade comercial e chave primária do funcionário
+        tests:
+          - unique
+          - not_null
+        
+      - name: jobtitle
+        description: Cargo
+    
+      - name: full_name
+        description: Nome completo do funcionário
+
+      - name: persontype
+        description: Classificação da pessoa SC = Contato da loja, IN = Individual (varejo) cliente, 
+            SP = Vendedor, EM = Funcionário administrativo, VC = Vendedor contato, GC = contato geral
+      
+      - name: hiredate
+        description: Data da contratação
+
+      - name: gender
+        description: Gênero sexual M = Homem , F = Mulher 
+      
+      - name: salesquota
+        description: Projeção de vendas anuais
+
+      - name: bonus
+        description: Valor do bonus caso a quota for atingida
+      
+      - name: commissionpct
+        description: Porcentagem de comissão recebida por venda
+
+      - name: salesytd
+        description: Total de vendas do ano até o momento
+      
+      - name: saleslastyear
+        description: Total de vendas do ano anterior
+
+      
