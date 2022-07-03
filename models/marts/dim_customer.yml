@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_customer
+    columns:
+      - name: customer_sk
+        description: The primary key of the dim creditcard
+        tests:
+          - unique
+          - not_null
+
+      - name: customerid
+        description: Chave primária dos registros de cliente
+        tests:
+          - unique
+          - not_null
+
+      - name: businessentityid
+        description: Número de identificação da entidade comercial
+      
+      - name: full_name
+        description: Nome completo do cliente

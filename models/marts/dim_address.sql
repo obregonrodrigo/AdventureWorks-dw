@@ -38,7 +38,6 @@ with select_address as (
             , select_address.addressline2
             , select_address.city
             , select_address.postalcode
-            --, select_stateprovince.stateprovinceid
             , select_stateprovince.stateprovincecode
             , select_stateprovince.province_name
             , select_countryregion.countryregioncode
