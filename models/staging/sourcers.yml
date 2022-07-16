@@ -6,13 +6,209 @@ sources:
     description: This is the Adventure Works erp postgres database replica
     tables:
       - name: person_address
+        columns:
+        - name: addressid
+          description: Primary key of address table
+          tests:
+            - unique
+            - not_null
+
+        - name: addressline1
+          description: Primeira linha do endereço
+        
+        - name: addressline2
+          description: Segunda linha do endereço
+
+        - name: city
+          description: Nome da cidade
+        
+        - name: stateprovinceid
+          description: Código postal do endereço
+        
+        - name: postalcode
+          description: Código do estado ou provincia
+
       - name: person_countryregion
+        columns:
+        - name: countryregioncode
+          description: Primary key of countryregion table
+          tests:
+            - unique
+            - not_null
+
+        - name: name
+          description: Nome do país ou região
+
       - name: person_person
+        columns:
+        - name: businessentityid
+          description: Primary key of person table
+          tests:
+            - unique
+            - not_null
+
+        - name: persontype
+          description: Tipo principal de pessoa
+            SC = Contato da loja, IN = Cliente individual (varejo),
+            SP = Vendedor, EM = Funcionário (não vendas), VC = Contato vendedor, GC = Contato geral
+
+        - name: firstname
+          description: Primeiro nome da pessoa
+
+        - name: middlename
+          description: Nome do meio ou inicial do meio da pessoa
+
+        - name: lastname
+          description: Nome do meio ou inicial do meio da pessoa
+
+        - name: emailpromotion
+          description: 0 = O contato não deseja receber promoções por e-mail,
+            1 = O contato deseja deseja receber promoções por e-mail da AdventureWorks,
+            2 = Contato deseja receber promoções por e-mail da AdventureWorks e parceiros selecionados,
+            Padrão 0
+
       - name: person_stateprovince
+        columns:
+        - name: stateprovinceid
+          description: Primary key of stateprovince table
+          tests:
+            - unique
+            - not_null
+
+        - name: stateprovincecode
+          description: Código do estado ou província padrão ISO
+        
+        - name: countryregioncode
+          description: Código de país ou região padrão ISO. Chave estrangeira para a tabela CountryRegion
+
+        - name: territoryid
+          description: ID do território em que o estado ou província está localizado. Chave estrangeira para tabela SalesTerritory
+
+        - name: name
+          description: Descrição do estado ou província
+
       - name: humanresources_employee
+        columns:
+        - name: businessentityid
+          description: Primary key of stateprovince table
+          tests:
+            - unique
+            - not_null
+
+        - name: nationalidnumber
+          description: Código do estado ou província padrão ISO
+        
+        - name: loginid
+          description: Código de país ou região padrão ISO. Chave estrangeira para a tabela CountryRegion
+
+        - name: jobtitle
+          description: ID do território em que o estado ou província está localizado. Chave estrangeira para tabela SalesTerritory
+
+        - name: birthdate
+          description: Descrição do estado ou província
+
+        - name: maritalstatus
+          description: Código de país ou região padrão ISO. Chave estrangeira para a tabela CountryRegion
+
+        - name: gender
+          description: ID do território em que o estado ou província está localizado. Chave estrangeira para tabela SalesTerritory
+
+        - name: hiredate
+          description: Descrição do estado ou província
+
       - name: production_product
+        columns:
+        - name: productid
+          description: Primary key of product table
+          tests:
+            - unique
+            - not_null
+
+        - name: productsubcategoryid
+          description: Produto é um membro desta subcategoria de produto. Chave estrangeira para ProductSubCategory
+        
+        - name: productmodelid
+          description: O produto é um membro deste modelo de produto. Chave estrangeira para ProductModel
+
+        - name: name
+          description: Nome do produto
+
+        - name: productnumber
+          description: Número único de identificação do produto
+
+        - name: color
+          description: Cor do produto
+
+        - name: safetystocklevel
+          description: Quantidade mínima de estoque
+
+        - name: reorderpoint
+          description: Nível de estoque que aciona uma ordem de compra ou ordem de serviço para reabastecer o estoque
+
+        - name: standardcost
+          description: Custo padrão do produto
+        
+        - name: listprice
+          description: Preço de venda
+
+        - name: size
+          description: Tamanho do produto
+
+        - name: sizeunitmeasurecode
+          description: Unidade de medida para a coluna size
+
+        - name: weightunitmeasurecode
+          description: Unidade de medida para a coluna weight
+
+        - name: weight
+          description: Peso do produto
+
+        - name: daystomanufacture
+          description: Número de dias necessários para fabricar o produto
+        
+        - name: productline
+          description: Linha do produto R = Estrada, M = Montanha, T = Turismo, S = Padrão
+
+        - name: class
+          description: Classe do produto H = Alto, M = Médio, L = Baixo
+
+        - name: style
+          description: Estilo em que o produto é categorizado W = Feminino, M = Masculino, U = Universal
+
+        - name: sellstartdate
+          description: Data em que o produto estava disponível para venda
+
+        - name: sellenddate
+          description: Data em que o produto não estava mais disponível para venda
+
+        - name: discontinueddate
+          description: Data em que o produto foi descontinuado
+
       - name: production_productcategory
+        columns:
+        - name: productcategoryid
+          description: Primary key of productcategory table
+          tests:
+            - unique
+            - not_null
+
+        - name: name
+          description: Nome da categoria
+
       - name: production_productsubcategory
+        columns:
+        - name: productsubcategoryid
+          description: Primary key of productsubcategory table
+          tests:
+            - unique
+            - not_null
+
+        - name: productcategoryid
+          description: Categoria do produto é um membro desta subcategoria de produto. Chave estrangeira para ProductCategory
+        
+        - name: name
+          description: Nome da subcategoria
+
       - name: sales_creditcard
       - name: sales_customer
       - name: sales_personcreditcard
