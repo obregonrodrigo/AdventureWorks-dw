@@ -6,13 +6,11 @@ models:
       - name: salesorderid
         description: The primary key of the dim product
         tests:
-          - unique
           - not_null
 
       - name: address_sk
         description: Chave primária do produto
         tests:
-          - unique
           - not_null
         
       - name: creditcard_sk
