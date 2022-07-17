@@ -210,11 +210,191 @@ sources:
           description: Nome da subcategoria
 
       - name: sales_creditcard
+        columns:
+        - name: creditcardid
+          description: Primary key of creditcard table
+          tests:
+            - unique
+            - not_null
+
+        - name: cardtype
+          description: Categoria do produto é um membro desta subcategoria de produto. Chave estrangeira para ProductCategory
+        
+        - name: cardnumber
+          description: Nome da subcategoria
+
+        - name: expmonth
+          description: Categoria do produto é um membro desta subcategoria de produto. Chave estrangeira para ProductCategory
+        
+        - name: expyear
+          description: Nome da subcategoria
+
       - name: sales_customer
+        columns:
+        - name: customerid
+          description: Primary key of customer table
+          tests:
+            - unique
+            - not_null
+
+        - name: personid
+          description: Chave estrangeira para Person
+        
+        - name: storeid
+          description: Chave estrangeira para Store
+
+        - name: territoryid
+          description: Chave estrangeira para Store
+
       - name: sales_personcreditcard
+        columns:
+        - name: businessentityid
+          description: Número de identificação da entidade empresarial. Chave estrangeira para Person
+          tests:
+            - unique
+            - not_null
+
+        - name: creditcardid
+          description: Número de identificação do cartão de crédito. Chave estrangeira para CreditCard
+
       - name: sales_salesorderdetail
+        columns:
+        - name: salesorderdetailid
+          description: Primary key of salesorderdetail table
+          tests:
+            - unique
+            - not_null
+
+        - name: salesorderid
+          description: Chave primária. Chave estrangeira para SalesOrderHeader
+        
+        - name: productid
+          description: Produto vendido ao cliente. Chave estrangeira para Product
+
+        - name: specialofferid
+          description: Código promocional. Chave estrangeira para SpecialOffer
+        
+        - name: carriertrackingnumber
+          description: Número de rastreamento da remessa fornecido pelo remetente
+
+        - name: orderqty
+          description: Quantidade pedida por produto
+        
+        - name: unitprice
+          description: Preço de venda de um único produto
+
+        - name: unitpricediscount
+          description: Valor do desconto. Padrão 0,0
+
       - name: sales_salesorderheader
+        columns:
+        - name: salesorderid
+          description: Primary key of salesorderheader table
+          tests:
+            - unique
+            - not_null
+
+        - name: revisionnumber
+          description: número incremental para rastrear alterações no pedido de venda ao longo do tempo. Padrão 0
+        
+        - name: purchaseordernumber
+          description: Número de referência do pedido de compra do cliente
+
+        - name: accountnumber
+          description: Número de referência da contabilidade financeira
+        
+        - name: customerid
+          description: Número de identificação do cliente. Chave estrangeira para Customer
+
+        - name: salespersonid
+          description: Vendedor que criou o pedido de venda. Chave estrangeira para SalesPerson
+        
+        - name: billtoaddressid
+          description: Endereço de cobrança do cliente. Chave estrangeira para Address
+
+        - name: shiptoaddressid
+          description: Endereço de entrega do cliente. Chave estrangeira para Address
+        
+        - name: shipmethodid
+          description: Método de envio. Chave estrangeira para ShipMethod
+        
+        - name: creditcardid
+          description: Número de identificação do cartão de crédito. Chave estrangeira para CreditCard
+
+        - name: currencyrateid
+          description: Taxa de câmbio da moeda utilizada. Chave estrangeira para CurrencyRate
+        
+        - name: orderdate
+          description: Datas em que o pedido de venda foi criado
+
+        - name: duedate
+          description: Data máxima em que o pedido deve ser entregue ao cliente
+        
+        - name: shipdate
+          description: Data em que o pedido foi enviado ao cliente
+
+        - name: status
+          description: Estado atual do pedido. 1 = Em processo; 2 = Aprovado; 3 = Pedido em espera;
+            4 = Rejeitado; 5 = Enviado; 6 = Cancelado, Padrão 1
+        
+        - name: subtotal
+          description: Subtotal de vendas. Padrão 0,00
+
+        - name: taxamt
+          description: Valor do imposto
+        
+        - name: freight
+          description: Shipping cost
+
+        - name: totaldue
+          description: Total devido pelo cliente. Calculado como Subtotal + TaxAmt + Freight
+
       - name: sales_salesorderheadersalesreason
+        columns:
+        - name: salesorderid
+          description: Chave primária. Chave estrangeira para SalesOrderHeader
+
+        - name: salesreasonid
+          description: Chave primária. Chave estrangeira para SalesReason
+
       - name: sales_salesperson
+        columns:
+        - name: businessentityid
+          description: Chave primária de SalesPerson. Chave estrangeira para Employee
+          tests:
+            - unique
+            - not_null
+
+        - name: territoryid
+          description: Território onde o vendedor é responsável. Chave estrangeira para SalesTerritory
+        
+        - name: salesquota
+          description: Vendas anuais projetadas
+
+        - name: bonus
+          description: Bônus devido se a cota for atingida.
+        
+        - name: commissionpct
+          description: Porcentagem de comissão recebida por venda
+
+        - name: salesytd
+          description: Total de vendas do ano até o momento
+        
+        - name: saleslastyear
+          description: Total de vendas do ano anterior
+
       - name: sales_salesreason
+        columns:
+        - name: SalesReasonID
+          description: Primary key of salesreason table
+          tests:
+            - unique
+            - not_null
+
+        - name: Name
+          description: Descrição do motivo da venda
+        
+        - name: ReasonType
+          description: Categoria à qual o motivo da venda pertence
+
       - name: sales_salesterritory
