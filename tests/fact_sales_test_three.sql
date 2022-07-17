@@ -1,10 +1,10 @@
--- sum total orderdue
+-- sum total unitprice
 with
     sum_order as (
         SELECT
-            sum(totaldue) as total
+            sum(unitprice) as total
         FROM {{ ref ('fact_sales') }}
         WHERE orderdate between '2012-12-01' and '2012-12-31' 
     )
 
-select * from sum_order where total != 3176848.1687
+select * from sum_order where total != 1257847.1713999854
