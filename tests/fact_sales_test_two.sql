@@ -4,7 +4,7 @@ with
         SELECT
             count(distinct(salesorderid)) as total
         FROM {{ ref ('fact_sales') }}
-        WHERE orderdate between '2012-01-01' and '2012-01-31' 
+        WHERE orderdate between '2013-04-01' and '2013-04-30' 
     )
 
-select * from count_order where total != 3967
+select * from count_order where total != 428
