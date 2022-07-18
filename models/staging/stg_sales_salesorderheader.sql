@@ -15,7 +15,6 @@ with source_data as (
         , cast (orderdate as date) as orderdate
         , cast (duedate as date) as duedate
         , cast (shipdate as date) as shipdate
-        , status as order_status
         , case
             when status = 2 then 'Approved'
             when status = 3 then 'Backordered'
