@@ -9,6 +9,10 @@ with source_data as (
         , unitprice
         , unitpricediscount
         , (unitprice * orderqty) * (1 - unitpricediscount)  as total_price
+        , case
+	        when specialofferid = 1 then 'No'
+	        else 'Yes'
+          end as promotion
     from {{source('adventureworks_data','sales_salesorderdetail')}}
 )
 

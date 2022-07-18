@@ -42,7 +42,7 @@ with select_address as (
             , fullsales.accountnumber
             , fullsales.orderdate
             , fullsales.shipdate
-            , fullsales.order_status
+            , fullsales.sales_status
             , fullsales.subtotal
             , fullsales.totaldue
             , fullsales.taxamt
@@ -54,6 +54,7 @@ with select_address as (
             , select_details.unitprice
             , select_details.unitpricediscount
             , select_details.total_price
+            , select_details.promotion
 
         from {{ ref('stg_sales_salesorderheader') }} as fullsales
             left join select_details
@@ -82,7 +83,7 @@ with select_address as (
             , select_fullsales.accountnumber
             , select_fullsales.orderdate
             , select_fullsales.shipdate
-            , select_fullsales.order_status
+            , select_fullsales.sales_status
             , select_fullsales.subtotal
             , select_fullsales.totaldue
             , select_fullsales.taxamt
@@ -92,6 +93,7 @@ with select_address as (
             , select_fullsales.unitprice
             , select_fullsales.unitpricediscount
             , select_fullsales.total_price
+            , select_fullsales.promotion
 
         from select_fullsales
             left join select_employee
