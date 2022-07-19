@@ -21,7 +21,8 @@ with select_product as (
         , style
         , sellstartdate
         , sellenddate
-        , discontinueddate				
+        , discontinueddate
+        , portifolio				
     
     from {{ ref('stg_production_product') }} 	
 
@@ -64,6 +65,7 @@ with select_product as (
             , select_product.sellstartdate
             , select_product.sellenddate
             , select_product.discontinueddate
+            , select_product.portifolio
             , select_category.productcategoryid
             , select_category.category_name
             , select_productsubcategory.productsubcategoryid
