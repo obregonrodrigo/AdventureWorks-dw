@@ -16,6 +16,7 @@ with source_data as (
         , cast (duedate as date) as duedate
         , cast (shipdate as date) as shipdate
         , case
+            when status = 1 then 'In process'
             when status = 2 then 'Approved'
             when status = 3 then 'Backordered'
             when status = 4 then 'Rejected'

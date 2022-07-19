@@ -62,6 +62,9 @@ models:
       
       - name: discontinueddate
         description: Data em que o produto foi descontinuado
+      
+      - name: portifolio
+        description: Produtos atualmente disponiveis para comercialização
 
       - name: productcategoryid
         description: Número de identificação da categoria do produto. 
