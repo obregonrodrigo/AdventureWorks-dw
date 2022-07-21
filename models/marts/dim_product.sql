@@ -50,8 +50,6 @@ with select_product as (
             , select_product.product_name
             , select_product.productnumber
             , select_product.color
-            --, select_product.safetystocklevel
-            --, select_product.reorderpoint
             , select_product.standardcost
             , select_product.listprice
             , select_product.product_size
