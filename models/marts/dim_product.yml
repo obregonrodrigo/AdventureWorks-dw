@@ -43,7 +43,8 @@ models:
         description: Número de dias necessários para fabricar o produto
       
       - name: productline
-        description: A qual linha o produto pertence, R = Estrada, M = Montanha, T = Turismo, S = Padrão
+        description: A qual linha o produto pertence
+        tests:
 
       - name: productnumber
         description: Número único de identificação do produto
