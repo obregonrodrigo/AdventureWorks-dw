@@ -1,7 +1,7 @@
 with source_data as (
     select
         salesorderid
-        , min(salesreasonid) as salesreasonid
+        , max(salesreasonid) as salesreasonid
     from {{source('adventureworks_data','sales_salesorderheadersalesreason')}}
     group by salesorderid
 )

@@ -22,8 +22,8 @@ with source_data as (
         , sellenddate
         , discontinueddate
         , case
-	        when discontinueddate IS NULL then 0
-	        else 1
+	        when sellenddate IS NULL then 1
+	        else 0
           end as portifolio
     from {{source('adventureworks_data','production_product')}}
 )

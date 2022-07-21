@@ -9,81 +9,82 @@ models:
           - not_null
 
       - name: address_sk
-        description: Chave primária do produto
-        tests:
-          - not_null
+        description: DESC 
         
       - name: creditcard_sk
-        description: produto é um membro deste modelo de produto. Chave estrangeira para ProductModelID
+        description: DESC  
     
       - name: customer_sk
-        description: Nome do produto
+        description: DESC 
 
       - name: employee_sk
-        description: Número único de identificação do produto
+        description: DESC 
       
       - name: reason_sk
-        description: Cor do produto
+        description: DESC 
 
       - name: salesorderdetailid
-        description: Preço de venda 
+        description: Chave primária. Um número único incremental por produto vendido.
       
       - name: customerid
-        description: Tamanho do produto
+        description: Número de identificação do cliente
 
       - name: salespersonid
-        description: Unidade de medida para a coluna product_weight
+        description: Vendedor que criou o pedido de venda. Chave estrangeira para SalesPerson
       
       - name: billtoaddressid
-        description: Peso do Produto
+        description: Endereço de cobrança do cliente. Chave estrangeira para Address
 
       - name: shiptoaddressid
-        description: Número de dias necessários para fabricar o produto
+        description: Endereço de entrega do cliente. Chave estrangeira para Address
       
       - name: shipmethodid
-        description: A qual linha o produto pertence, R = Estrada, M = Montanha, T = Turismo, S = Padrão
+        description: Método de envio do pedido
 
       - name: creditcardid
-        description: Número único de identificação do produto
+        description: Número do cartão de crédito
       
       - name: currencyrateid
-        description: Classificação do produto, H = Alto, M = Médio, L = Baixo
+        description: Taxa de câmbio da moeda utilizada. Chave estrangeira para CurrencyRate
 
       - name: productid
-        description: Classificação do estilo do produto, W = Feminino, M = Masculino, U = Universal
+        description: Produto vendido ao cliente. Chave estrangeira para Product
       
       - name: revisionnumber
-        description: Data em que o produto estava disponível para venda
+        description: número incremental para rastrear alterações no pedido de venda ao longo do tempo. Padrão 0
 
       - name: purchaseordernumber
-        description: Data em que o produto não estava mais disponível para venda
+        description: Número de referência do pedido de compra do cliente
       
       - name: accountnumber
-        description: Data em que o produto foi descontinuado
+        description: Número de referência da contabilidade financeira
 
       - name: orderdate
-        description: Número de identificação da categoria do produto. 
+        description: Datas em que o pedido de venda foi criado
 
       - name: shipdate
-        description: Descrição da categoria
+        description: Data em que o pedido foi enviado ao cliente
+      
+      - name: duedate
+        description: Data máxima em que o pedido deve ser entregue ao cliente
       
       - name: order_status
-        description: Número de identificação da subcategoria do produto. 
+        description: Estado atual do pedido. 1 = Em processo; 2 = Aprovado; 3 = Pedido em espera; 4 = Rejeitado; 5 = Enviado; 6 = Cancelado, Padrão 1
 
       - name: subtotal
-        description: Descrição da subcategoria
+        description: Subtotal de vendas. Padrão 0,00
 
       - name: taxamt
-        description: Data em que o produto foi descontinuado
+        description: Valor do imposto
 
       - name: freight
-        description: Número de identificação da categoria do produto. 
+        description: Valor do frete 
 
       - name: unitprice
-        description: Descrição da categoria
+        description: Preço de venda de um único produto
       
       - name: unitpricediscount
-        description: Número de identificação da subcategoria do produto. 
+        description: Valor do desconto. Padrão 0,0
 
       - name: total_price
-        description: Descrição da subcategoria
+        description: Valor do uniprice x orderqty

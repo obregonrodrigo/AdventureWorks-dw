@@ -397,4 +397,22 @@ sources:
         - name: ReasonType
           description: Categoria à qual o motivo da venda pertence
 
-      - name: sales_salesterritory
+      - name: purchasing_shipmethod
+        columns:
+        - name: shipmethodid
+          description: Número de identificação do transportador
+          tests:
+            - unique
+            - not_null
+
+        - name: Name
+          description: Nome do transportador
+        
+        - name: shipbase
+          description: Valor mínimo de envio. Padrão 0,00
+        
+        - name: shiprate
+          description: Taxa de envio por peso. Padrão 0,00
+
+      - name: sales_vpersondemographics
+      
