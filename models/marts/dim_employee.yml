@@ -24,12 +24,16 @@ models:
       - name: persontype
         description: Classificação da pessoa SC = Contato da loja, IN = Individual (varejo) cliente, 
             SP = Vendedor, EM = Funcionário administrativo, VC = Vendedor contato, GC = contato geral
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["SC", "IN", "SP", "EM", "VC", "GC"]
       
       - name: hiredate
         description: Data da contratação
 
       - name: gender
-        description: Gênero sexual M = Homem , F = Mulher 
+        description: Gênero sexual M = Homem , F = Mulher
       
       - name: salesquota
         description: Projeção de vendas anuais
