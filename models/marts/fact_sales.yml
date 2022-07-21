@@ -3,28 +3,34 @@ version: 2
 models:
   - name: fact_sales
     columns:
-      - name: salesorderid
+      - name: salesorderdetailid
         description: The primary key of the dim product
         tests:
           - not_null
 
-      - name: address_sk
-        description: DESC 
+      - name: address_fk
+        description: surrogate key dim address
         
-      - name: creditcard_sk
-        description: DESC  
+      - name: creditcard_fk
+        description: surrogate key dim creditcard
     
-      - name: customer_sk
-        description: DESC 
+      - name: customer_fk
+        description: surrogate key dim customer 
 
-      - name: employee_sk
-        description: DESC 
+      - name: employee_fk
+        description: surrogate key dim employee
       
-      - name: reason_sk
-        description: DESC 
+      - name: reason_fk
+        description: surrogate key dim reason
 
-      - name: salesorderdetailid
-        description: Chave primária. Um número único incremental por produto vendido.
+      - name: product_fk
+        description: surrogate key dim product
+      
+      - name: shipper_fk
+        description: surrogate key dim shippers
+
+      - name: salesorderid
+        description: Número de identificação do pedido
       
       - name: customerid
         description: Número de identificação do cliente

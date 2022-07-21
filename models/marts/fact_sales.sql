@@ -66,14 +66,15 @@ with select_address as (
     )
     , final_fact as (
         select
-            select_fullsales.salesorderid
-            , select_address.address_sk
-            , select_creditcard.creditcard_sk
-            , select_customer.customer_sk
-            , select_employee.employee_sk
-            , select_salesreason.reason_sk
-            , select_shippers.shipper_sk
-            , select_fullsales.salesorderdetailid
+            select_fullsales.salesorderdetailid
+            , select_address.address_sk as address_fk
+            , select_creditcard.creditcard_sk as creditcard_fk
+            , select_product.product_sk as product_fk
+            , select_customer.customer_sk as customer_fk
+            , select_employee.employee_sk as employee_fk
+            , select_salesreason.reason_sk as reason_fk
+            , select_shippers.shipper_sk as shipper_fk
+            , select_fullsales.salesorderid
             , select_fullsales.customerid
             , select_fullsales.salespersonid
             , select_fullsales.billtoaddressid
@@ -102,6 +103,8 @@ with select_address as (
         from select_fullsales
             left join select_employee
                 on select_employee.businessentityid = select_fullsales.salespersonid
+            left join select_product
+                on select_product.productid = select_fullsales.productid
             left join select_customer
                 on select_customer.customerid = select_fullsales.customerid
             left join select_address
