@@ -44,12 +44,11 @@ with select_salesperson as (
             , select_salesperson.salesytd
             , select_salesperson.saleslastyear
             
-
-        from select_employee
+        from select_salesperson
+            left join select_employee
+                on select_employee.businessentityid = select_salesperson.businessentityid
             left join select_person
                 on select_person.businessentityid = select_employee.businessentityid
-            left join select_salesperson
-                on select_salesperson.businessentityid = select_person.businessentityid
 
 )
 

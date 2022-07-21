@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_shippers
+    columns:
+      - name: shipper_sk
+        description: The primary key of the dim shippers
+        tests:
+          - unique
+          - not_null
+
+      - name: shipmethodid
+        description: Número de identificação do transportador
+
+      - name: ship_name
+        description: Nome do transportador
+      
+      - name: shipbase
+        description: Valor mínimo de envio. Padrão 0,00

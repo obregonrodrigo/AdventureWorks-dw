@@ -22,6 +22,10 @@ with select_address as (
         select *
         from {{ ref('dim_salesreason') }}
     )
+    , select_shippers as (
+        select *
+        from {{ ref('dim_shippers') }}
+    )
     , select_details as (
         select *
         from {{ ref('stg_sales_salesorderdetail') }}
@@ -68,6 +72,7 @@ with select_address as (
             , select_customer.customer_sk
             , select_employee.employee_sk
             , select_salesreason.reason_sk
+            , select_shippers.shipper_sk
             , select_fullsales.salesorderdetailid
             , select_fullsales.customerid
             , select_fullsales.salespersonid
@@ -105,6 +110,8 @@ with select_address as (
                 on select_salesreason.salesorderid = select_fullsales.salesorderid
             left join select_creditcard
                 on select_creditcard.creditcardid = select_fullsales.creditcardid
+            left join select_shippers
+                on select_shippers.shipmethodid = select_fullsales.shipmethodid
     )
 
     select * from final_fact
