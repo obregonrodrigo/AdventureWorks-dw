@@ -24,7 +24,6 @@ with select_customer as (
             row_number() over (order by customerid) as customer_sk -- auto-incremental surrogate key
             , select_customer.customerid
             , select_customer.storeid
-            -- , select_customer.territoryid
             , select_person.businessentityid
             , select_person.full_name
 
