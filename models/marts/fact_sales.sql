@@ -99,6 +99,8 @@ with select_address as (
             , select_fullsales.unitpricediscount
             , select_fullsales.total_price
             , select_fullsales.promotion
+            , ifnull(select_salesreason.reason_name,'Other') as reason_name_fact
+            , ifnull(select_creditcard.cardtype,'Other') as cardtype_fact
 
         from select_fullsales
             left join select_employee
